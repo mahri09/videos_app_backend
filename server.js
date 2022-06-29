@@ -2,11 +2,23 @@ const express = require("express");
 const cors = require("cors");
 const videos = require("./routes/videos");
 
-
-const app = express();
-
+const dotenv = require('dotenv');
+dotenv.config();
 
 const port = process.env.PORT || 3000;
+
+const pool = new Pool({
+
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+    rejectUnauthorized: false
+    },
+    password:process.env.DB_PASSWORD,
+  })
+
+ const app = express();
+
+
 app.use(cors());
 
 app.use(express.json());
