@@ -18,7 +18,7 @@ const pool = new Pool({
 })
 
 
-router.get("/", function (request, response) {
+router.get("/", function (req, res) {
   pool.query('SELECT * FROM videos' )
   .then ((result)=>res.json(result.rows))
   .catch((error)=>{
