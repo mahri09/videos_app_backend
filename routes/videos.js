@@ -1,9 +1,30 @@
 const express = require("express");
 const router = express.Router();
 let videosData = require("../data/data");
+const  {Pool}= require('pg');
+const dotenv = require('dotenv');
+dotenv.config();
+
+ 
+
+
+const pool = new Pool({
+
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+  rejectUnauthorized: false
+  },
+  password:process.env.DB_PASSWORD,
+})
+
 
 router.get("/", function (request, response) {
-  response.json(videosData);
+  pool.query('SELECT * FROM videos' )
+  .then ((result)=>res.json(result.rows))
+  .catch((error)=>{
+      console.log(error)
+      res.status(500).json(error);
+  })
 });
 
 router.get("/:id", function (request, response) {

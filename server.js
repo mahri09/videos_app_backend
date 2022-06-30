@@ -7,15 +7,6 @@ dotenv.config();
 
 const port = process.env.PORT || 3000;
 
-const pool = new Pool({
-
-    connectionString: process.env.DATABASE_URL,
-    ssl: {
-    rejectUnauthorized: false
-    },
-    password:process.env.DB_PASSWORD,
-  })
-
  const app = express();
 
 
