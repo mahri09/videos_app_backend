@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 let videosData = require("../data/data");
 const  {Pool}= require('pg');
-const dotenv = require('dotenv');
+const dotenv = require('../.env');
 dotenv.config();
 
  
