@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: false }));
 // GET "/"
 app.get("/", (req, res) => {
   // Delete this line after you've confirmed your server is running
-  res.send({ express: "Your Backend Service is Running" });
+  res.send({ express: "Your Backend Service is Running. go to /videos to see your data" });
 });
 
 app.use("/videos", videos);
