@@ -3,7 +3,7 @@ const router = express.Router();
 const  {Pool}= require('pg');
 const dotenv = require('dotenv');
 dotenv.config();
-const {moment} = require('moment')
+let moment = require('moment');
 
 
 const pool = new Pool({
@@ -36,7 +36,10 @@ router.get("/:id", function (req, res) {
 
 router.post("/", function (req, res) {
   let  {title,video_id,categories,isFavorite,votes}=req.body;
-  let  newData = moment().format('YYYY-MM-DD HH:mm:ss')
+  console.log(req.body)
+
+  let  newData = moment(new Date()).format('YYYY-MM-DD')
+  console.log(newData)
   for (let key in req.body) {
     if (!req.body[key]) {
       return res.status(400).send("Please fill in all the details");
