@@ -59,7 +59,7 @@ router.post("/", function (req, res) {
 router.delete("/:id", function (req, res) {
   let paramId = req.params.id;
   pool.query('DELETE FROM videos WHERE id = $1', [paramId])  
-  .then (()=>res.send(`Video ${paramId} deleted`))
+  .then (()=>res.send({"message":`Video ${paramId} deleted`}))
   .catch((error)=>{
       console.log(error)
       res.status(500).json(error);
