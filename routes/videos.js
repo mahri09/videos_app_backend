@@ -51,7 +51,7 @@ router.post("/", function (req, res) {
       "INSERT INTO videos (title, video_id, categories, isFavorite, votes, created_date) VALUES ($1,$2,$3,$4,$5,$6)",
       [ title,video_id,categories,isFavorite,votes,newData]
     )
-    .then(() => res.send("Successful" ))
+    .then(() => res.send({"message":"Successful" }))
     .catch((error) => console.log(error));
 });
 
