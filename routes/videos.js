@@ -66,12 +66,12 @@ router.delete("/:id", function (req, res) {
   })
 });
 
-//PUT REQUEST
+//PUT REQUEST (update)
 router.put("/:id", function (req, res) {
   let paramId = req.params.id;
   let  {title,video_id,categories,isFavorite,votes}=req.body;
-  pool.query('UPDATE videos SET title =$1, video_id= $2, categories=$3, isFavorite=$4, votes =$5 WHERE id = $6',
-            [title,video_id,categories,isFavorite,votes,paramId])  
+  pool.query('UPDATE videos SET isFavorite=$1, votes =$2 WHERE id = $3',
+            [isFavorite,votes,paramId])  
   .then (()=>{
         res.json( `Video ${paramId} updated`)
         console.log( `Video ${paramId} updated`)
